@@ -106,7 +106,7 @@ public class DropdownTasks {
     }
 
     @Test
-    public void test4_multiple_value_select_dropdown(){
+    public void test4_multiple_value_select_dropdown() throws InterruptedException {
 
         // 3.Select all the options from multiple select dropdown.
         //locate the dropdown
@@ -118,6 +118,7 @@ public class DropdownTasks {
         //loop all through the options to select all of them
 
         for(WebElement eachOptiopns:allOptions){
+            Thread.sleep(500);
                 eachOptiopns.click(); // this will click each option with every iterations
             // 4.Print out all selected values.
             System.out.println("Selected: "+eachOptiopns.getText());
@@ -126,5 +127,38 @@ public class DropdownTasks {
             Assert.assertTrue(eachOptiopns.isSelected(),"The option "+eachOptiopns.getText()+" is not selected");
         }
         // 5.Deselect all values.
+        multipleSelectDropdown.deselectAll();
+        for(WebElement eachOptions: allOptions){
+            // this true so it will be flase boolean value, with ! we make is true
+            //Assert.assertTrue(eachOptions.isSelected());
+
+            // assertFalse method looks for "false" boolean value to pass the test
+            Assert.assertFalse(eachOptions.isSelected());
+        }
+
+
+
+    }
+
+    @Test
+    public void test5_html_dropdown_handling(){
+
+        //Locate the HTML dropdown as a regular web element
+        WebElement websiteDropdown = driver.findElement(By.xpath("//div[@class='dropdown']/a"));
+
+        //3. Click to non-select dropdown
+        websiteDropdown.click();
+
+        //4. Select Facebook from dropdown
+        WebElement facebookLink = driver.findElement(By.xpath("//a[.='Facebook']"));
+
+        facebookLink.click();
+
+        //5. Verify title is “Facebook - Log In or Sign Up”
+        String actualTitle = driver.getTitle();
+        String expectedTitle = "Facebook - Log In or Sign Up";
+
+        Assert.assertEquals(actualTitle, expectedTitle, "Actual title does not match expected title!");
+
     }
 }

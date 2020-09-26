@@ -113,7 +113,4 @@ public class SmartBearTests {
         Assert.assertTrue(suceessMessage.isDisplayed(),"Success message is displayed");
     }
 
-
-
-
 }

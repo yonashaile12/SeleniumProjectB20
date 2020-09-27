@@ -47,6 +47,39 @@ public class AlertsPractices {
         //assert "resultText" is displayed
         Assert.assertTrue(resultText.isDisplayed(),"Result text is not displayed.Verification FAILED!!!");
 
+    }
+
+    @Test
+    public void p2_confirmation_alert_practice(){
+        //locating the warning/ information alert button to click it
+        WebElement warningAlertButton = driver.findElement(By.xpath("//button[.='Click for JS Confirm']"));
+
+        //click on the button
+        warningAlertButton.click();
+
+        //Create alert instance
+        Alert alert = driver.switchTo().alert();
+
+        //We can either accept(), or dismiss() the confirmation alert
+        //alert.dismiss();
+        alert.accept();
+
+        //Locating the result text web element
+        WebElement resultText = driver.findElement(By.xpath("//p[@id ='result']"));
+
+        //Assert
+        Assert.assertTrue(resultText.isDisplayed(),"Text is not displayed. Verification FAILED!!!");
+
+        /*
+        Home work
+        TC #3: Information alert practice
+        1.Open browser
+        2.Go to website: http://practice.cybertekschool.com/javascript_alerts
+        3.Click to “Click for JS Prompt” button
+        4.Send “hello”text to alert
+        5.Click to OK button from the alert
+        6.Verify “You entered:  hello” text is displayed.
+         */
 
     }
 }

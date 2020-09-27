@@ -1,8 +1,12 @@
 package com.cybertek.utilities;
 
+import org.apache.hc.client5.http.ssl.ClientTlsStrategyBuilder;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
+
+import java.util.List;
 
 public class SmartBearsUtilities {
     //Mini-Task:
@@ -23,5 +27,39 @@ public class SmartBearsUtilities {
         // 5.Click to Login button
         WebElement loginButton = driver.findElement(By.id("ctl00_MainContent_login_button"));
         loginButton.click();
+    }
+
+
+    /*
+    PRACTICE #4: Method: verifyOrder
+    •Create a method named verifyOrder in SmartBearUtils class.
+    •Method takes WebDriver object and String(name).
+    •Method should verify if given name exists in orders.
+    •This method should simply accepts a name(String), and assert whether
+    given name is in the list or not.
+    •Create a new TestNG test to test if the method is working as expected.
+     */
+    public static void verifyOrder(WebDriver driver, String name){
+
+        //created a locatr that only return the names of the customer from all of the rows
+        //Created a list and stored the cells that has name information into it.
+        List<WebElement> namesList = driver.findElements(By.xpath("//table[@id='ctl00_MainContent_orderGrid']//tr/td[2]"));
+
+        //if thet is only one table on the page, you don't have to locate the table ---> //tr/td[2]
+        //List<WebElement> namesList = driver.findElements(By.xpath("//tr/td[2]")
+
+        for (WebElement each : namesList) {
+
+            if(each.getText().equals(name)){
+                Assert.assertTrue(true);
+                return;
+            }
+
+        }
+        Assert.fail("Name does not exist in the list");
+
+
+
+
     }
 }

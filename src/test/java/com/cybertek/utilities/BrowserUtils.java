@@ -27,7 +27,7 @@ public class BrowserUtils {
         }
         return webelementAsString;
     }
-    /*
+    /**
     Create a utility method named: wait
     static method
     @param sec
@@ -40,7 +40,7 @@ public class BrowserUtils {
         try{
             Thread.sleep(sec * 1000);
         }catch (InterruptedException e){
-
+            System.out.println(e.getMessage());
         }
     }
 

@@ -25,7 +25,15 @@ public class WebTablePractices {
     @Test
     public void task4_verify_order(){
 
-      SmartBearsUtilities.verifyOrder(driver, "Mark Smiths");
+      SmartBearsUtilities.verifyOrder(driver, "Mark Smith");
+      //SmartBearsUtilities.verifyOrder(driver, "Mark Smiths"); //negative test
+    }
+
+    // Using
+    @Test
+    public void task5_print_names_cities(){
+
+       SmartBearsUtilities.printNamesAndCities(driver);
     }
 
 

@@ -64,4 +64,29 @@ public class SmartBearsUtilities {
 
 
     }
+
+    /*
+    Practice #5: Method: printNamesAndCities
+    •Create a method named printNamesAndCitiesin SmartBearUtils class.
+    •Method takes WebDriver object.
+    •This method should simply print all the names in the List of All Orders.
+    •Create a new TestNG test to test if the method is working as expected.
+    •Output should be like:
+    •Name1: name , City1: city
+    •Name2: name , City2: city
+     */
+
+    public static void printNamesAndCities(WebDriver driver){
+
+        //locating all the names from all the rows and storing in a list of web element
+        List<WebElement> namesList = driver.findElements(By.xpath("//table[@id='ctl00_MainContent_orderGrid']//tr/td[2]"));
+
+        //we need to locate all the cities from all rows
+        List<WebElement> citiesList = driver.findElements(By.xpath("//table[@id='ctl00_MainContent_orderGrid']//tr/td[7]"));
+        for (int i = 0; i < namesList.size(); i++) {
+
+            System.out.println("Name"+ (i+1) +": " + namesList.get(i).getText() + ", City"+ (i+1) +": " + citiesList.get(i).getText());
+        }
+    }
+
 }

@@ -4,6 +4,7 @@ import com.cybertek.utilities.WebDriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -43,8 +44,19 @@ public class IframePractice {
         //3-Locate as a web element, then switch to it
         WebElement iframes = driver.findElement(By.id("mce_0_ifr"));
         driver.switchTo().frame(iframes);
-        //Locating paragrapoh tag as a web element
+
+        //4-Locating paragrapoh tag as a web element
         WebElement yourContantGoesHereText = driver.findElement(By.xpath("//p"));
 
+        //Assert that the text is displayed on the page
+        Assert.assertTrue(yourContantGoesHereText.isDisplayed(),"Text is not displayed. Verification FAILED!!!");
+
+        //5-Assert: "An Iframe containing the TinyMCE WYSIWYG Editor"
+        driver.switchTo().defaultContent();
+        //driver.switchTo().parentFrame(); this will take the iframe to the parent frame
+
+        WebElement headerText = driver.findElement(By.xpath("//h3"));
+
+        Assert.assertTrue(headerText.isDisplayed(),"Header text is not displayed.Verification FAILED!!!");
     }
 }

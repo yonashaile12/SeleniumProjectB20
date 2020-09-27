@@ -27,6 +27,22 @@ public class BrowserUtils {
         }
         return webelementAsString;
     }
+    /*
+    Create a utility method named: wait
+    static method
+    @param sec
+    return void
+    the integer number that i pass as parameter should be accpeted as SECONDS
+    handle checked exeptions with try/catch
+     */
+
+    public static void wait(int sec){
+        try{
+            Thread.sleep(sec * 1000);
+        }catch (InterruptedException e){
+
+        }
+    }
 
 
 }

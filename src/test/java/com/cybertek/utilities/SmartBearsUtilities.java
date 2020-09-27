@@ -48,15 +48,17 @@ public class SmartBearsUtilities {
         //if thet is only one table on the page, you don't have to locate the table ---> //tr/td[2]
         //List<WebElement> namesList = driver.findElements(By.xpath("//tr/td[2]")
 
+        //typr iter press tab for "for each"m loop short cut
         for (WebElement each : namesList) {
 
-            if(each.getText().equals(name)){
-                Assert.assertTrue(true);
+            if(each.getText().equalsIgnoreCase(name)){
+                Assert.assertTrue(each.getText().equalsIgnoreCase(name));
                 return;
             }
 
         }
-        Assert.fail("Name does not exist in the list");
+        //Assert.fail method will fail the test when it is called, no matter what.
+        Assert.fail("Name does not exist in the list! Verification Failed!!!");
 
 
 

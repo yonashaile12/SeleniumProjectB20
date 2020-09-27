@@ -58,7 +58,7 @@ public class SmartBearsUtilities {
 
         }
         //Assert.fail method will fail the test when it is called, no matter what.
-        Assert.fail("Name does not exist in the list! Verification Failed!!!");
+        Assert.fail("Name: "+name+" does not exist in the list! Verification Failed!!!");
 
 
 

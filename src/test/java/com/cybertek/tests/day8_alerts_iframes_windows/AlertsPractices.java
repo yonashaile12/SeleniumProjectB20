@@ -70,7 +70,9 @@ public class AlertsPractices {
         //Assert
         Assert.assertTrue(resultText.isDisplayed(),"Text is not displayed. Verification FAILED!!!");
 
-        /*
+    }
+
+    /*
         Home work
         TC #3: Information alert practice
         1.Open browser
@@ -79,7 +81,6 @@ public class AlertsPractices {
         4.Send “hello”text to alert
         5.Click to OK button from the alert
         6.Verify “You entered:  hello” text is displayed.
-         */
+     */
 
-    }
 }

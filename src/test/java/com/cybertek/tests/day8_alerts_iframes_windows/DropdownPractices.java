@@ -1,5 +1,6 @@
 package com.cybertek.tests.day8_alerts_iframes_windows;
 
+import com.cybertek.utilities.BrowserUtils;
 import com.cybertek.utilities.WebDriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -56,7 +57,7 @@ public class DropdownPractices {
 
         List<String> expectedMonthOptions = Arrays.asList("January","February","March","April","May","June","July",
                 "August","September","October","November","December");
-
+/*
         //Create a new list of Strings, and store the texts of web elements into this new list
         List<String> actualMonthTexts = new ArrayList<>();
 
@@ -65,9 +66,11 @@ public class DropdownPractices {
             actualMonthTexts.add(each.getText());
         }
 
+ */
+
         //Passing list into Assertions:
         //First it will check the size, then it will check the content
-        Assert.assertEquals(actualMonthTexts,expectedMonthOptions);
+        Assert.assertEquals(BrowserUtils.getElementText(actualMonthOptions),expectedMonthOptions);
 
 
     }

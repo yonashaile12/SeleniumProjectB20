@@ -1,7 +1,9 @@
 package com.cybertek.tests.day9_windows_tabs;
 
+import com.cybertek.utilities.BrowserUtils;
 import com.cybertek.utilities.WebDriverFactory;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -57,6 +59,45 @@ public class WindowHandlingPractices {
             System.out.println("Current title is "+driver.getTitle());
         }
 
+        //Getting the current(Actual) title, and comparing with expected title.
+        Assert.assertTrue(driver.getTitle().equals("New Window"));
+
+        BrowserUtils.wait(2);
+
+        //driver.close(); // driver close will close the current focused window
+
+        //If i want to switch back to continue with someother action
+        driver.switchTo().window(mainHandle);
+
+        //driver quit will close all of the tabs that are opened in that session together
+        driver.quit();
+
+    }
+    @Test
+    public void p6_handling_more_than_two_windows(){
+        driver.get("http://amazon.com");
+
+        //This is line is basically: we are downCasting our driver type to JavaScriptExcutor
+        //The only thing this line is doing is USING JS EXCUTOR -->
+        ((JavascriptExecutor) driver).executeScript("window.open('http://google.com','_blank');");
+        ((JavascriptExecutor) driver).executeScript("window.open('http://etsy.com','_blank');");
+        ((JavascriptExecutor) driver).executeScript("window.open('http://facebook.com','_blank');");
+
+        Set<String> windowHandle = driver.getWindowHandles();
+        //Amazon.com
+        //Facebook
+        //Etsy
+        //Google
+        for (String each : windowHandle) {
+            BrowserUtils.wait(2);
+            driver.switchTo().window(each);
+            System.out.println( "Current page Title: "+driver.getTitle() );
+
+            if(driver.getCurrentUrl().contains("etsy")){
+                Assert.assertTrue(driver.getTitle().contains("Etsy"));
+                break;
+            }
+        }
 
     }
 }

@@ -6,12 +6,16 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
 public class Bitrix {
+/**
+ US#2 AC#4. (Automation) User should be able to create a quote by clicking on the comma
+ */
 
     WebDriver driver;
 
@@ -32,18 +36,29 @@ public class Bitrix {
 
         WebElement login = driver.findElement(By.className("login-btn"));
         login.click();
+        /*
         //User should be able to create a quote by clicking on the Comma icon.
         //WebElement taskButton = driver.findElement(By.xpath());
+         */
 
     }
 
     @Test
     public void task_button(){
-        //user should be able to click on task and should be able to see "Things to do"
-
+        /**
+        user should be able to click on task and should be able to see "Things to do"
+        Given I am on the "Activity Stream"
+        When I click on the "Task" button
+        Then I should be able to see "Things to do"
+         */
         WebElement taskButton = driver.findElement(By.xpath("(//span[.='Task'])[2]"));
         taskButton.click();
         BrowserUtils.wait(2);
+        /**
+        When I hover to the bottom of the blank message page
+        Then I should be able to locate "Quote text" button
+        Then I should be able click "Quote text
+         */
         driver.findElement(By.xpath("(//span[@title='Quote text'])[2]")).click();
         BrowserUtils.wait(2);
 
@@ -52,13 +67,17 @@ public class Bitrix {
         driver.switchTo().frame(1);
 
         WebElement creatingQoute = driver.findElement(By.className("bxhtmled-quote"));
-        creatingQoute.sendKeys("User Should be able to create a Qoute by clicking the comma!");
-
+        creatingQoute.sendKeys("user should be able to create a quote by clicking ,, \"Quote text\"");
+        /**
+        Then I should be able to see an edit box
+        Then I should be able to create a quote by clicking "send" button
+         */
         String actualValue = creatingQoute.getText();
-        String expectedValue = "User Should be able to create a Qoute by clicking the comma!";
+        String expectedValue = "user should be able to create a quote by clicking ,, \"Quote text\"";
 
         Assert.assertEquals(actualValue,expectedValue,"Message is not displayed. Verification FAILED!!!");
 
     }
+
 
 }

@@ -48,4 +48,30 @@ public class JavaScriptExecutor_Practices {
 
 
     }
+
+    @Test
+    public void fill_form_using_javascript(){
+        Driver.getDriver().get("http://practice.cybertekschool.com/sign_up");
+
+        WebElement usernameInput = Driver.getDriver().findElement(By.name("full_name"));
+        WebElement emailInput = Driver.getDriver().findElement(By.name("email"));
+        WebElement signUpButton = Driver.getDriver().findElement(By.name("wooden_spoon"));
+
+        BrowserUtils.wait(1);
+
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+
+        //sending keys to usernameInput using javascript function  .setAttribute
+        js.executeScript("arguments[0].setAttribute('value','Jane Doe')",usernameInput);
+
+        BrowserUtils.wait(1);
+
+        //sending keys to emailinput using javascript function  .setAttribute
+        js.executeScript("arguments[0].setAttribute('value','something@gmail.com')",emailInput);
+
+        BrowserUtils.wait(1);
+        //clicking to signUpButton using javascript funtion
+        js.executeScript("arguments[0].click()",signUpButton);
+
+    }
 }

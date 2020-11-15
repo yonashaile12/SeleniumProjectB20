@@ -24,6 +24,16 @@ public class ReadTextFile {
         while(scanner.hasNext()){
             System.out.println(scanner.nextLine());
         }
+//          #########################################
+        String path2 = "grades.csv";
+
+        File file2 = new File(path2);
+
+        Scanner scanner2 = new Scanner(file2);
+
+        while(scanner2.hasNext()){
+            System.out.println(scanner2.nextLine());
+        }
 
     }
 }

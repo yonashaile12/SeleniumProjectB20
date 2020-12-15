@@ -29,5 +29,7 @@ public class F3_HeaderVerification {
         }else{
             System.out.println("Header Verification Failed!");
         }
+
+        driver.close();
     }
 }
